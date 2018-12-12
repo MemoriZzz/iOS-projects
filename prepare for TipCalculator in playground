@@ -1,0 +1,154 @@
+//Array//
+
+import UIKit
+
+var str = "Hello, playground"
+
+//create an empty array - variable declaration
+var someInts = [Int]()
+print("someInts is of type [Int] with \(someInts.count) items.")
+
+//add an element to this empty array
+someInts.append(3)
+
+//empty the array again but it's still an int array, bcz we declare it before
+someInts = []
+
+//creating an array with a default value
+var threeDoubles = Array (repeating: 0.1, count: 3)
+var anotherThreeDoubles = Array (repeating: 2.5, count: 3)
+var sixDouble = threeDoubles + anotherThreeDoubles
+
+//creating an array with an array literal
+var shoppingList: [String] = ["eggs", "milk"]
+//simpler
+var anotherShoppingList = ["eggs", "milk"]
+
+print("the shopping list contains \(shoppingList.count) items.")
+
+//.isEmpty
+if shoppingList.isEmpty{
+    print("the shopping list is empty")
+}else{
+    print("the shopping list is not empty")
+}
+
+// add
+ shoppingList.append("flour")
+print("the shopping list contains \(shoppingList.count) items.")
+
+shoppingList += ["salt"]
+print("the shopping list contains \(shoppingList.count) items.")
+
+//sequence number
+var firstItem = shoppingList[0]
+ shoppingList [1...3]
+
+//insert & remove
+shoppingList.insert("Syrup", at: 0)
+shoppingList.remove(at: 0)
+
+let theRemovedItem = shoppingList.remove(at: 0)
+
+//print
+for item in shoppingList{
+    print(item)
+}
+
+
+
+
+//ifStatement//
+
+import UIKit
+
+var str = "Hello, playground"
+
+var temperatureInFahrenheit = 30
+if temperatureInFahrenheit <= 32{
+    print("It's very cold. Consider wearing a scarf.")
+}
+
+temperatureInFahrenheit = 40
+if temperatureInFahrenheit <= 32{
+    print("It's very cold. Consider wearing a scarf.")
+}else{
+    print("It's not that cold. Wear a T-shirt.")
+}
+
+
+temperatureInFahrenheit = 90
+if temperatureInFahrenheit <= 32{
+    print("It's very cold. Consider wearing a scarf.")
+}else if temperatureInFahrenheit >= 86{
+    print("It's really warm. Don't forget to wear sunscreen")
+}else{
+    print("It's not that cold. Wear a T-shirt.")
+}
+
+
+//classes//
+
+import UIKit
+
+var str = "Hello, playground"
+
+
+// an example
+struct Resolution{
+    var width = 0
+    var hight = 0
+}
+
+class VideoMode{
+    var resolution = Resolution()
+    var interlaced = false
+    var frameRate = 0.0
+    var name: String?
+}
+
+let someResolution = Resolution()
+let someVideoMode = VideoMode()
+
+print("the width of someResolution is \(someResolution.width)")
+print("the width of someVideoMode is \(someVideoMode.resolution.width)")
+
+someVideoMode.resolution.width = 1280
+print("the width of someVideoMode now is \(someVideoMode.resolution.width)")
+
+
+
+//ComputedProperties//
+
+import UIKit
+
+var str = "Hello, playground"
+
+struct Point{
+    var x = 0.0
+    var y = 0.0
+}
+struct Size{
+    var width = 0.0
+    var height = 0.0
+}
+struct Rect{
+    var origin = Point()
+    var size = Size()
+    var center: Point{
+        get{
+            let centerX = origin.x + (size.width / 2)
+            let centerY = origin.y + (size.height / 2)
+            return Point(x: centerX, y: centerY)
+        }
+        set (newCenter){
+            origin.x = newCenter.x - (size.width / 2)
+            origin.y = newCenter.y - (size.height / 2)
+        }
+    }
+}
+var square = Rect(   origin: Point(x:0.0, y:0.0),   size:Size(width: 10.0, height: 10.0)   )
+let initialSquareCenter = square.center
+square.center = Point(x:15.0, y:15.0)
+print("square.origin is now at (   \(square.origin.x)    ,   \(square.origin.y)    )")
+
